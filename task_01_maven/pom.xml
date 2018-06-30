@@ -26,23 +26,8 @@
 
     <build>
         <finalName>${project.name}</finalName>
-
         <plugins>
-
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>ru.otus.task1.Main</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-
-            <!--plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.0.0</version>
@@ -66,8 +51,7 @@
                         </manifest>
                     </archive>
                 </configuration>
-            </plugin-->
-
+            </plugin>
         </plugins>
     </build>
 
