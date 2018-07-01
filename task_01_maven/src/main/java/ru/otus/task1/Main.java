@@ -20,5 +20,13 @@ public class Main {
         List<String> input = Arrays.asList(args);
         Collections.shuffle(input);
         System.out.println(input);
+        doStuffInOrderToCheckObfuscation();
+    }
+
+    private static void doStuffInOrderToCheckObfuscation() {
+        String s = "";
+        for (int i = 0; i < 1000; i++) {
+            s.concat("1");
+        }
     }
 }
