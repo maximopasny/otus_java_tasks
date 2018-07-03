@@ -54,6 +54,31 @@
             </plugin>
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals><goal>shade</goal></goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <artifactSet>
+                        <includes>
+                            <include>ru.otus.*:*</include>
+                        </includes>
+                    </artifactSet>
+                    <transformers>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                            <!-- This is entry point of your jar -->
+                            <mainClass>ru.otus.task1.Main</mainClass>
+                        </transformer>
+                    </transformers>
+                </configuration>
+            </plugin>
+
+            <plugin>
                 <groupId>com.github.wvengen</groupId>
                 <artifactId>proguard-maven-plugin</artifactId>
                 <version>2.0.14</version>
@@ -78,6 +103,9 @@
                         <option>-keep public class ru.otus.task1.Main {public static void main(java.lang.String[]);}</option>
                         <option>-dontwarn</option>
                     </options>
+                    <includeDependencyInjar>
+                        true
+                    </includeDependencyInjar>
                 </configuration>
             </plugin>
         </plugins>
