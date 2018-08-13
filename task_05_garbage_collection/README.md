@@ -10,20 +10,20 @@
 <h3>Результаты</h3>
 
 <h4>Serial GC</h4>
-<------------------------------------------>  
-Youngs count: 35  
-Total young gc time consumed 33023  
-Avg young gc time consumed 943  
-Olds count: 7  
-Total old gc time consumed 82984  
-Avg old gc time consumed 11854  
-Total gc time consumption: 116007  
-Total count: 42  
-Total time: 382296  
-Total count: 382296  
-young/old: 0.3979441820109901  
-gc part: 0.30344811350367257  
-Done!  
+<------------------------------------------>\  
+Youngs count: 35\  
+Total young gc time consumed 33023\  
+Avg young gc time consumed 943\  
+Olds count: 7\  
+Total old gc time consumed 82984\  
+Avg old gc time consumed 11854\  
+Total gc time consumption: 116007\  
+Total count: 42\  
+Total time: 382296\  
+Total count: 382296\  
+young/old: 0.3979441820109901\  
+gc part: 0.30344811350367257\  
+Done!\  
 <------------------------------------------>  
 
 
