@@ -10,26 +10,32 @@
 <h3>Результаты</h3>
 
 <h4>Serial GC</h4>
-<------------------------------------------>\  
-Youngs count: 35\  
-Total young gc time consumed 33023\  
-Avg young gc time consumed 943\  
-Olds count: 7\  
-Total old gc time consumed 82984\  
-Avg old gc time consumed 11854\  
-Total gc time consumption: 116007\  
-Total count: 42\  
-Total time: 382296\  
-Total count: 382296\  
-young/old: 0.3979441820109901\  
-gc part: 0.30344811350367257\  
-Done!\  
+<------------------------------------------>
+
+```
+Youngs count: 35
+Total young gc time consumed 33023
+Avg young gc time consumed 943
+Olds count: 7
+Total old gc time consumed 82984
+Avg old gc time consumed 11854
+Total gc time consumption: 116007
+Total count: 42
+Total time: 382296
+Total count: 382296
+young/old: 0.3979441820109901
+gc part: 0.30344811350367257
+Done!
+```
+
 <------------------------------------------>  
 
 
 
 <h4>ParallelOldGC</h4>
 <------------------------------------------>  
+
+```
 Youngs count: 36  
 Total young gc time consumed 20406  
 Avg young gc time consumed 566  
@@ -43,10 +49,14 @@ Total count: 234558
 young/old: 0.6086074741268752  
 gc part: 0.22994312707304804  
 Done!  
+```
+
 <------------------------------------------>  
 
 <h4>ParallelGC</h4>
 <------------------------------------------>  
+
+```
 Youngs count: 33  
 Total young gc time consumed 17431  
 Avg young gc time consumed 528  
@@ -60,10 +70,14 @@ Total count: 261257
 young/old: 0.4911662768745245  
 gc part: 0.20255916587880898  
 Done!  
+```
+
 <------------------------------------------>  
 
 <h4>G1GC</h4>  
-<------------------------------------------>  
+<------------------------------------------> 
+
+```
 Youngs count: 35  
 Total young gc time consumed 21419  
 Avg young gc time consumed 611  
@@ -77,10 +91,14 @@ Total count: 305017
 young/old: 0.39838184692643913  
 gc part: 0.24649117918017685  
 Done!  
+```
+
 <------------------------------------------>  
 
 <h4>ConcMarkSweepGC</h4>
 <------------------------------------------>  
+
+```
 Youngs count: 35  
 Total young gc time consumed 26188  
 Avg young gc time consumed 748  
@@ -94,4 +112,6 @@ Total count: 320017
 young/old: 0.44006049403461606  
 gc part: 0.267792023548749  
 Done!  
+```
+
 <------------------------------------------>  
