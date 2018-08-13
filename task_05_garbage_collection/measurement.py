@@ -1,0 +1,12 @@
+import os
+os.system("mvn clean install")
+os.system("java -jar target/task-05-gc-1.0-SNAPSHOT-jar-with-dependencies.jar -agentlib:jdwp=transport=dt_socket,address=14000,server=y,suspend=n -Xms256m -Xmx256m -XX:MaxMetaspaceSize=256m -XX:+UseSerialGC > UseSerialGC.txt")
+print("UseSerialGC done")
+os.system("java -jar target/task-05-gc-1.0-SNAPSHOT-jar-with-dependencies.jar -agentlib:jdwp=transport=dt_socket,address=14000,server=y,suspend=n -Xms256m -Xmx256m -XX:MaxMetaspaceSize=256m -XX:+UseParallelGC > UseParallelGC.txt")
+print("UseParallelGC done")
+os.system("java -jar target/task-05-gc-1.0-SNAPSHOT-jar-with-dependencies.jar -agentlib:jdwp=transport=dt_socket,address=14000,server=y,suspend=n -Xms256m -Xmx256m -XX:MaxMetaspaceSize=256m -XX:+UseParallelOldGC > UseParallelOldGC.txt")
+print("UseParallelOldGC done")
+os.system("java -jar target/task-05-gc-1.0-SNAPSHOT-jar-with-dependencies.jar -agentlib:jdwp=transport=dt_socket,address=14000,server=y,suspend=n -Xms256m -Xmx256m -XX:MaxMetaspaceSize=256m -XX:+UseG1GC > UseG1GC.txt")
+print("UseG1GC done")
+os.system("java -jar target/task-05-gc-1.0-SNAPSHOT-jar-with-dependencies.jar -agentlib:jdwp=transport=dt_socket,address=14000,server=y,suspend=n -Xms256m -Xmx256m -XX:MaxMetaspaceSize=256m -XX:+UseConcMarkSweepGC > UseConcMarkSweepGC.txt")
+print("UseConcMarkSweepGC done")

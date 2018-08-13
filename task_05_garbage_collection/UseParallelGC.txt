@@ -1,0 +1,19 @@
+Starting pid: 9334@MacBook-Pro-mac.localdomain
+GC bean name is G1 Young Generation
+GC bean name is G1 Old Generation
+Thread Running
+<------------------------------------------>
+Youngs count: 33
+Total young gc time consumed 17431
+Avg young gc time consumed 528
+Olds count: 5
+Total old gc time consumed 35489
+Avg old gc time consumed 7097
+Total gc time consumption: 52920
+Total count: 38
+Total time: 261257
+Total count: 261257
+young/old: 0.4911662768745245
+gc part: 0.20255916587880898
+Done!
+<------------------------------------------>
