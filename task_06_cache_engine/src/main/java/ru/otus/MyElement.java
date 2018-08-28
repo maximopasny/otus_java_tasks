@@ -8,14 +8,14 @@ import java.lang.ref.SoftReference;
 @SuppressWarnings("WeakerAccess")
 public class MyElement<K, V> {
     private final K key;
-    private final SoftReference<V> value;
+    private final V value;
     private final long creationTime;
     private long lastAccessTime;
 
 
     public MyElement(K key, V value) {
         this.key = key;
-        this.value = new SoftReference<>(value);
+        this.value = value;
         this.creationTime = getCurrentTime();
         this.lastAccessTime = getCurrentTime();
     }
@@ -29,7 +29,7 @@ public class MyElement<K, V> {
     }
 
     public V getValue() {
-        return value.get();
+        return value;
     }
 
     public long getCreationTime() {

@@ -1,5 +1,6 @@
 package ru.otus;
 
+import java.lang.ref.SoftReference;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Timer;
@@ -17,7 +18,7 @@ public class CacheEngineImpl<K, V> implements CacheEngine<K, V> {
     private final long idleTimeMs;
     private final boolean isEternal;
 
-    private final Map<K, MyElement<K, V>> elements = new LinkedHashMap<>();
+    private final Map<K, SoftReference<MyElement<K, V>>> elements = new LinkedHashMap<>();
     private final Timer timer = new Timer();
 
     private int hit = 0;
@@ -37,7 +38,7 @@ public class CacheEngineImpl<K, V> implements CacheEngine<K, V> {
         }
 
         K key = element.getKey();
-        elements.put(key, element);
+        elements.put(key, new SoftReference<>(element));
 
         if (!isEternal) {
             if (lifeTimeMs != 0) {
@@ -52,14 +53,15 @@ public class CacheEngineImpl<K, V> implements CacheEngine<K, V> {
     }
 
     public MyElement<K, V> get(K key) {
-        MyElement<K, V> element = elements.get(key);
-        if (element != null) {
+        SoftReference<MyElement<K, V>> elementReference = elements.get(key);
+        if (elementReference != null && elementReference.get() != null) {
             hit++;
-            element.setAccessed();
+            elementReference.get().setAccessed();
         } else {
             miss++;
         }
-        return element;
+
+        return elementReference != null ? elementReference.get() : null;
     }
 
     public int getHitCount() {
@@ -79,7 +81,15 @@ public class CacheEngineImpl<K, V> implements CacheEngine<K, V> {
         return new TimerTask() {
             @Override
             public void run() {
-                MyElement<K, V> element = elements.get(key);
+                SoftReference<MyElement<K, V>> elementReference = elements.get(key);
+
+                if (elementReference == null) {
+                    this.cancel();
+                    return;
+                }
+
+                MyElement<K, V> element = elementReference.get();
+
                 if (element == null || isT1BeforeT2(timeFunction.apply(element), System.currentTimeMillis())) {
                     elements.remove(key);
                     this.cancel();
