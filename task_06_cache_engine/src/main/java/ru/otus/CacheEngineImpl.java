@@ -7,9 +7,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.function.Function;
 
-/**
- * Created by tully.
- */
+
 public class CacheEngineImpl<K, V> implements CacheEngine<K, V> {
     private static final int TIME_THRESHOLD_MS = 5;
 
