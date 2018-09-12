@@ -1,5 +1,6 @@
 package atm.machine;
 
+import atm.exception.InvalidBanknotePassedException;
 import atm.exception.UnsupportedCurrencyException;
 import atm.operation.cash.ProduceCashToClientCalculator;
 import atm.operation.cash.ProduceCashToClientCalculatorImpl;
@@ -70,7 +71,7 @@ public class ATMMachineImpl implements ATMMachine {
                         .anyMatch(banknote -> !currentCellsBalance.keySet().contains(banknote));
 
         if (cashPassedToStoreContainsUnknownBanknote) {
-            throw new UnsupportedCurrencyException();
+            throw new InvalidBanknotePassedException();
         }
 
         banknotesToStoreWithCount.entrySet()
