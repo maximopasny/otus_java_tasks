@@ -6,6 +6,7 @@ import department.common.memento.Memento;
 import department.common.observer.ATMObservable;
 import department.common.observer.event.Event;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
@@ -43,35 +44,54 @@ public class ATMMachineWithCaretakerImpl implements ATMMachineWithCaretaker {
     @Override
     public Map<Integer, Integer> giveBanknotes(Long amount, String currency) {
         saveState();
+        return giveBanknotesActualImpl(amount, currency);
+    }
+
+    public Map<Integer, Integer> giveBanknotesActualImpl(Long amount, String currency) {
         return atmMachine.giveBanknotes(amount, currency);
     }
 
     @Override
     public void takeBanknotes(String currency, Map<Integer, Integer> banknotesWithCount) {
         saveState();
+        takeBanknotesActualImpl(currency, banknotesWithCount);
+    }
+
+    public void takeBanknotesActualImpl(String currency, Map<Integer, Integer> banknotesWithCount) {
         atmMachine.takeBanknotes(currency, banknotesWithCount);
     }
 
     @Override
     public void applyState(Map<String, Map<Integer, Integer>> cells) {
         saveState();
+        applyStateActualImpl(cells);
+    }
+
+    public void applyStateActualImpl(Map<String, Map<Integer, Integer>> cells) {
         atmMachine.applyState(cells);
     }
 
     private void saveState() {
-        Memento stateToSave = new Memento(atmMachine.getBalance());
+        Map<String, Map<Integer, Integer>> balanceCopy
+                = atmMachine.getBalance().entrySet().stream()
+                .collect(Collectors.toMap(entry -> entry.getKey(), entry -> new HashMap<>(entry.getValue())));
+        Memento stateToSave = new Memento(balanceCopy);
         savedStates.push(stateToSave);
     }
 
     @Override
     public void undo() {
         Memento prevState = savedStates.pop();
-        atmMachine.applyState(prevState.getCellsState());
+        applyStateActualImpl(prevState.getCellsState());
     }
 
     @Override
     public void applyInitialState() {
         saveState();
+        applyInitialStateActualImpl();
+    }
+
+    public void applyInitialStateActualImpl() {
         Map<String, Map<Integer, Integer>> mapToSet = initialState.entrySet().stream()
                 .collect(Collectors.toMap(entry -> entry.getKey(),
                         entry -> entry.getValue().stream().
@@ -82,7 +102,6 @@ public class ATMMachineWithCaretakerImpl implements ATMMachineWithCaretaker {
 
     @Override
     public Object[] doEvent(Event event) {
-        saveState();
         return event.execute(this);
     }
 }

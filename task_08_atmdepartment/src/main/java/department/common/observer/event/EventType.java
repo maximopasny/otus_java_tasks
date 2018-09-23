@@ -1,5 +1,5 @@
 package department.common.observer.event;
 
 public enum EventType {
-    GET_BALANCE, UNDO, RESET
+    GET_BALANCE, UNDO, RESET, LOAD_MONEY
 }
