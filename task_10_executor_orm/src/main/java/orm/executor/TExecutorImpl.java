@@ -30,11 +30,11 @@ public class TExecutorImpl implements TExecutor {
                 arg.setArg(preparedStatement);
             }
             preparedStatement.executeUpdate();
-            ResultSet rs = preparedStatement.getGeneratedKeys();
-
-            if (rs.next()) {
-                long id = rs.getLong(1);
-                ORMUtils.setId(entity, id);
+            try (ResultSet rs = preparedStatement.getGeneratedKeys()) {
+                if (rs.next()) {
+                    long id = rs.getLong(1);
+                    ORMUtils.setId(entity, id);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,9 +50,11 @@ public class TExecutorImpl implements TExecutor {
                 arg.setArg(preparedStatement);
             }
 
-            ResultSet rs = preparedStatement.executeQuery();
-            rs.next();
-            return ORMUtils.fillQueryResult(clazz, rs);
+            try (ResultSet rs = preparedStatement.executeQuery()){
+                rs.next();
+                return ORMUtils.fillQueryResult(clazz, rs);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
