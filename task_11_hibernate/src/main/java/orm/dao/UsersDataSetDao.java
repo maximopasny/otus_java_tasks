@@ -1,0 +1,35 @@
+package orm.dao;
+
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+import orm.base.entity.UsersDataSet;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
+public class UsersDataSetDao {
+
+    private Session session;
+
+    public UsersDataSetDao(Session session) {
+        this.session = session;
+    }
+
+    public void save(UsersDataSet dataSet) {
+        session.save(dataSet);
+    }
+
+    public UsersDataSet read(long id) {
+        return session.load(UsersDataSet.class, id);
+    }
+
+    public UsersDataSet readByName(String name) {
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<UsersDataSet> criteria = builder.createQuery(UsersDataSet.class);
+        Root<UsersDataSet> from = criteria.from(UsersDataSet.class);
+        criteria.where(builder.equal(from.get("name"), name));
+        Query<UsersDataSet> query = session.createQuery(criteria);
+        return query.uniqueResult();
+    }
+}
