@@ -28,6 +28,10 @@ public class HibernateProcessingTest {
 
         dbService.saveUser(usersDataSet);
         dbService.findById(usersDataSet.getId());
-        dbService.findByName("Maxim");
+        UsersDataSet user = dbService.findByName("Maxim");
+        assertEquals(user.getName(), "Maxim");
+        assertEquals(user.getPhones().size(), 1);
+        assertEquals(user.getAddress().getStreet(), "Pushkina");
+        assertEquals(user.getPhones().get(0).getNumber(), "88005553535");
     }
 }

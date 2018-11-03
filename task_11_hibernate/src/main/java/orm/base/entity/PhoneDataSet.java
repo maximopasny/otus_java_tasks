@@ -12,16 +12,19 @@ import java.util.StringJoiner;
 @Table(name = "phones")
 @Entity
 public class PhoneDataSet extends DataSet {
-    @Column(name = "age", nullable = false)
+    @Column(name = "number", nullable = false)
     @Basic
     private String number;
 
-    @Column(name = "userId", nullable = false)
+    @Column(name = "userId")
     @Basic
     private Long userId;
 
     public PhoneDataSet(String number) {
         this.number = number;
+    }
+
+    public PhoneDataSet() {
     }
 
     public String getNumber() {

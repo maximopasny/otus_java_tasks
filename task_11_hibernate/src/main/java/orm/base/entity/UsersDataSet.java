@@ -21,12 +21,12 @@ public class UsersDataSet extends DataSet {
     private Integer age;
 
     @OneToOne
-    @JoinColumn(name = "id", referencedColumnName = "addressId")
+    @JoinColumn(name = "addressId", referencedColumnName = "id")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private AddressDataSet address;
 
     @OneToMany
-    @PrimaryKeyJoinColumn(name = "id", referencedColumnName = "userId")
+    @JoinColumn(name = "userId")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<PhoneDataSet> phones;
 
