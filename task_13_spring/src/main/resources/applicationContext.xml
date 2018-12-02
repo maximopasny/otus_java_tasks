@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="cacheEngine" class="jettytask.cache.CacheEngineImpl">
+        <constructor-arg name="maxElements" value="10"/>
+        <constructor-arg name="lifeTimeMs" value="60000"/>
+        <constructor-arg name="idleTimeMs" value="45000"/>
+        <constructor-arg name="isEternal" value="false"/>
+    </bean>
+
+    <bean id="dbService" class="jettytask.orm.base.DBServiceHibernateCachedImpl">
+        <constructor-arg name="cacheEngine" ref="cacheEngine"/>
+    </bean>
+
+</beans>
