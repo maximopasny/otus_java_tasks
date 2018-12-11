@@ -16,12 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 
 @Configurable
 public class AddUserServlet extends HttpServlet {
+    @Autowired
+    private DBService dbService;
+
     public void setDbService(DBService dbService) {
         this.dbService = dbService;
     }
-
-    @Autowired
-    private DBService dbService;
     private static final Logger logger = LoggerFactory.getLogger(AddUserServlet.class);
 
     @Override

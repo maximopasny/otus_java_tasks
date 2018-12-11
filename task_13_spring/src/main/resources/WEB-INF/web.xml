@@ -44,6 +44,6 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>public_html/add.html</welcome-file>
+        <welcome-file>add.html</welcome-file>
     </welcome-file-list>
 </web-app>

@@ -14,12 +14,12 @@ import java.io.IOException;
 
 @Configurable
 public class CountUsersServlet extends HttpServlet {
+    @Autowired
+    private DBService dbService;
+
     public void setDbService(DBService dbService) {
         this.dbService = dbService;
     }
-
-    @Autowired
-    private DBService dbService;
 
     @Override
     public void init(ServletConfig config) throws ServletException {

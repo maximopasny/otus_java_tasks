@@ -15,12 +15,12 @@ import java.io.IOException;
 
 @Configurable
 public class GetUserServlet extends HttpServlet {
+    @Autowired
+    private DBService dbService;
+
     public void setDbService(DBService dbService) {
         this.dbService = dbService;
     }
-
-    @Autowired
-    private DBService dbService;
 
     public GetUserServlet() {
 
