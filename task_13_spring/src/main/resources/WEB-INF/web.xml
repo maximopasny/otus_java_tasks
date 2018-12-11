@@ -20,7 +20,7 @@
 
     <servlet-mapping>
         <servlet-name>addUserServlet</servlet-name>
-        <url-pattern>/add</url-pattern>
+        <url-pattern>/adduser</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -40,10 +40,10 @@
 
     <servlet-mapping>
         <servlet-name>getUserServlet</servlet-name>
-        <url-pattern>/get</url-pattern>
+        <url-pattern>/getuser</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>get.html</welcome-file>
+        <welcome-file>public_html/add.html</welcome-file>
     </welcome-file-list>
 </web-app>

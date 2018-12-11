@@ -3,7 +3,7 @@ package jettytask.orm.h2source;
 import java.sql.*;
 
 public class Database {
-    private static final String DB_CONNECTION_STRING = "jdbc:h2:./myorm;DB_CLOSE_DELAY=-1;FILE_LOCK=NO";
+    private static final String DB_CONNECTION_STRING = "jdbc:h2:mem:myorm";
     private static final String DB_USER = "qwe";
     private static final String DB_PASSWORD = "qwe";
     private static final String DDL_TABLE_USER = "CREATE TABLE Users (\n" +
